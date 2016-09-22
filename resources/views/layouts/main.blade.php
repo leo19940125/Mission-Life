@@ -99,6 +99,9 @@
                     <li>
                         <a href="{{ url('/quest') }}">任務大廳</a>
                     </li>
+                    <li>
+                        <a href="{{ url('/item') }}">商店</a>
+                    </li>
                 </ul>
                 @elseif(Auth::Guest() == false && Auth::user()->auth == '1')
                 <ul class="nav navbar-nav navbar-left">
