@@ -78,11 +78,11 @@
       							<td>{{ $quests[$i]->creator }}</td>
       						</tr>
       						<tr>
-      							<td>開始時間</td>
+      							<td>執行開始時間</td>
       							<td>{{ $quests[$i]->start_at }}</td>
       						</tr>
       						<tr>
-      							<td>截止時間</td>
+      							<td>執行截止時間</td>
       							<td>{{ $quests[$i]->end_at }}</td>
       						</tr>
       						<tr>
@@ -157,8 +157,8 @@
 					<tr>
 						<th>任務標題</th>
 						<th>發布單位</th>
-						<th>開始時間</th>
-						<th>結束時間</th>
+						<th>報名開始時間</th>
+						<th>報名結束時間</th>
 						<th>獎勵冒險點數</th>
 						<th>薪資</th>
 						<th>需要人數</th>
