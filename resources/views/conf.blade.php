@@ -37,6 +37,10 @@
       							<td>{{ $quests[$i]->creator }}</td>
       						</tr>
                   <tr>
+                    <td>演講地點</td>
+                    <td>{{ $quests[$i]->place }}</td>
+                  </tr>
+                  <tr>
                     <td>講師名稱</td>
                     <td>{{ $quests[$i]->speaker}}</td>
                   </tr>
@@ -95,11 +99,11 @@
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th class="text-center">任務標題</th>
+						<th class="text-center col-md-3">任務標題</th>
 						<th class="text-center">講師名稱</th>
-						<th class="text-center">申請截止時間</th>
+						<th class="text-center col-md-2">申請截止時間</th>
 						<th class="text-center">開始時間 ~ 結束時間</th>
-            <th class="text-center">活動地點</th>
+            <th class="text-center">演講地點</th>
 						<th class="text-center">獎勵冒險點數</th>
 						<th class="text-center">人數上限</th>
 					</tr>
