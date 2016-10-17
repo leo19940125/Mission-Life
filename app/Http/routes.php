@@ -40,6 +40,14 @@ Route::get('/newquest','QuestController@showNewquest');
 Route::get('/select_mission','QuestController@select_mission');
 Route::get('/newquest_2','QuestController@showNewquest_2');
 Route::post('/newquest','QuestController@store');
+Route::post('/newquest_2','QuestController@store_2');
+
+// NPC增加新活動
+Route::get('/newactivity','ActivityController@showNewactivity');
+Route::post('/newactivity','ActivityController@store');
+// NPC增加新講座
+Route::get('/newlecture','LectureController@showNewlecture');
+Route::post('/newlecture','LectureController@store');
 
 // NPC管理任務
 Route::get('/questmanage','QuestController@showQuestmanage');
