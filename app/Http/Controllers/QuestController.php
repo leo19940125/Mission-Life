@@ -202,15 +202,47 @@ class QuestController extends Controller
         return view('work',['quests' => $quests, 'ums' => $ums, 'mission_require' => $mission_require]);
 
     }
+    public function showWork_2(Request $request)
+    {
+        // $quests = DB::table('quest')->where('catalog','0')->get();  // 從資料庫抓取工讀資料
+        // if ($request->page === '3') {
+        //     return $request->all();
+        // }
+        $quests = DB::table('quests')->paginate(10);
+        // if (isset($quests)) {
+        //     return $quests->currentPage();
+        // }
+        // if ($quests instanceof LengthAwarePaginator){
+        //     return 'yes';
+        // }else{
+        //     return 'no';
+        // }
+        $mission_require = DB::table('mission_require')->get();  // 從資料庫抓取工讀條件
+        $ums = DB::table('um')->where('user_id',Auth::user()->id)->get();  // 從資料庫抓取使用者-工讀資料
+        return view('work',['quests' => $quests, 'ums' => $ums, 'mission_require' => $mission_require]);
+
+    }
     public function showActivity()
     {
-        $quests = DB::table('quest')->where('catalog','1')->get();
+        $quests = DB::table('quest')->get();
+        $ums = DB::table('um')->where('user_id',Auth::user()->id)->get();
+        return view('activity',['quests' => $quests, 'ums' => $ums]);
+    }
+    public function showActivity_2()
+    {
+        $quests = DB::table('activities')->paginate(10);
         $ums = DB::table('um')->where('user_id',Auth::user()->id)->get();
         return view('activity',['quests' => $quests, 'ums' => $ums]);
     }
     public function showConf()
     {
         $quests = DB::table('quest')->where('catalog','2')->get();
+        $ums = DB::table('um')->where('user_id',Auth::user()->id)->get();
+        return view('conf',['quests' => $quests, 'ums' => $ums]);
+    }
+    public function showConf_2()
+    {
+        $quests = DB::table('lectures')->paginate(10);
         $ums = DB::table('um')->where('user_id',Auth::user()->id)->get();
         return view('conf',['quests' => $quests, 'ums' => $ums]);
     }

@@ -29,7 +29,7 @@
       				<div class="modal-body">	
       					<table class="table ">
       						<tr>
-      							<td class="col-md-2">任務標題</td>
+      							<td class="col-md-3">任務標題</td>
       							<td>{{ $quests[$i]->name }}</td>
       						</tr>
       						<tr>
@@ -37,28 +37,32 @@
       							<td>{{ $quests[$i]->creator }}</td>
       						</tr>
       						<tr>
-      							<td>開始時間</td>
-      							<td>{{ $quests[$i]->start_at }}</td>
+      							<td>執行開始時間</td>
+      							<td>{{ $quests[$i]->execute_start_at }}</td>
       						</tr>
       						<tr>
-      							<td>截止時間</td>
-      							<td>{{ $quests[$i]->end_at }}</td>
+      							<td>執行結束時間</td>
+      							<td>{{ $quests[$i]->execute_end_at }}</td>
       						</tr>
       						<tr>
       							<td>任務描述</td>
       							<td>{{ $quests[$i]->description }}</td>
       						</tr>
       						<tr>
-      							<td>薪資待遇</td>
-      							<td>新台幣{{ $quests[$i]->salary }}元</td>
+      							<td>參加費用</td>
+      							<td>{{ $quests[$i]->admission_fee }}</td>
       						</tr>
+                  <tr>
+                    <td>其他事項</td>
+                    <td>{{ $quests[$i]->other_description}}</td>
+                  </tr>
       						<tr>
       							<td>獎勵點數</td>
       							<td>{{ $quests[$i]->point }}點</td>
       						</tr>
       						<tr>
-      							<td>人數需求</td>
-      							<td>{{ $quests[$i]->workforce }}人</td>
+      							<td>人數上限</td>
+      							<td>{{ $quests[$i]->max_people }}人</td>
       						</tr>
       					</table>
       				</div>
@@ -88,32 +92,32 @@
 				<li class="active">活動任務</li>
 			</ol>
 
+      {{ $quests->links()}}
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th>任務標題</th>
-						<th>發布單位</th>
-						<th>開始時間</th>
-						<th>結束時間</th>
-						<th>獎勵冒險點數</th>
-						<th>薪資</th>
-						<th>需要人數</th>
+						<th class="text-center">任務標題</th>
+						<th class="text-center">申請截止時間</th>
+						<th class="text-center">開始時間 ~ 結束時間</th>
+            <th class="text-center">任務地點</th>
+						<th class="text-center">獎勵冒險點數</th>
+						<th class="text-center">人數上限</th>
 					</tr>
 				</thead>
 				<tbody>
   				@for($i=0; $i < count($quests); $i++)
   					<tr data-toggle="modal" data-target="#quest{{$i}}">
   						<td>{{ $quests[$i]->name }}</td>
-  						<td>{{ $quests[$i]->creator }}</td>
-  						<td>{{ $quests[$i]->start_at }}</td>
-  						<td>{{ $quests[$i]->end_at }}</td>
-  						<td>{{ $quests[$i]->point }}</td>
-  						<td>{{ $quests[$i]->salary }}</td>
-  						<td>{{ $quests[$i]->workforce }}</td>
+  						<td class="text-center">{{ $quests[$i]->apply_end_at }}</td>
+  						<td class="text-center">{{ $quests[$i]->execute_start_at }} ~ {{ $quests[$i]->execute_end_at }}</td>
+              <td class="text-center">{{ $quests[$i]->place}}</td>
+  						<td class="text-center">{{ $quests[$i]->point }}</td>
+  						<td class="text-center">{{ $quests[$i]->max_people }}</td>
   					</tr>
 				@endfor
 				</tbody>
 			</table>
+      {{ $quests->links()}}
 
   			
 

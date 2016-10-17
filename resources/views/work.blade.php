@@ -70,20 +70,24 @@
       				<div class="modal-body">	
       					<table class="table ">
       						<tr>
-      							<td class="col-md-2">任務標題</td>
+      							<td class="col-md-3">任務標題</td>
       							<td>{{ $quests[$i]->name }}</td>
       						</tr>
       						<tr>
       							<td>發佈單位</td>
       							<td>{{ $quests[$i]->creator }}</td>
       						</tr>
+                  <tr>
+                    <td>工讀地點</td>
+                    <td>{{ $quests[$i]->place }}</td>
+                  </tr>
       						<tr>
       							<td>執行開始時間</td>
-      							<td>{{ $quests[$i]->start_at }}</td>
+      							<td>{{ $quests[$i]->execute_start_at }}</td>
       						</tr>
       						<tr>
-      							<td>執行截止時間</td>
-      							<td>{{ $quests[$i]->end_at }}</td>
+      							<td>執行結束時間</td>
+      							<td>{{ $quests[$i]->execute_end_at }}</td>
       						</tr>
       						<tr>
       							<td>任務描述</td>
@@ -106,7 +110,13 @@
                   </tr>
       						<tr>
       							<td>薪資待遇</td>
-      							<td>新台幣{{ $quests[$i]->salary }}元</td>
+                      @if($quests[$i]->salary_type === 0) 
+                        <td>新台幣: {{ $quests[$i]->salary }} 元/小時</td>
+                      @elseif($quests[$i]->salary_type === 1)
+                        <td>新台幣: {{ $quests[$i]->salary }} 元/日</td>
+                      @elseif($quests[$i]->salary_type === 2)
+                        <td>新台幣: {{ $quests[$i]->salary }} 元/次</td>
+                      @endif
       						</tr>
       						<tr>
       							<td>獎勵點數</td>
@@ -114,7 +124,7 @@
       						</tr>
       						<tr>
       							<td>人數需求</td>
-      							<td>{{ $quests[$i]->workforce }}人</td>
+      							<td>{{ $quests[$i]->people_require }}人</td>
       						</tr>
       					</table>
       				</div>
@@ -138,42 +148,48 @@
 		@endfor
 
 		<div class="container">
-    <div class="row">
-      <div class="col-sm-10">
-        <ol class="breadcrumb">
-        <li><a href="{{ url('/') }}">首頁</a></li>
-        <li><a href="{{ url('/quest') }}">任務大廳</a></li>
-        <li class="active">工讀任務</li>
-        </ol>
+      <div class="row">
+        <div class="col-sm-10">
+          <ol class="breadcrumb">
+          <li><a href="{{ url('/') }}">首頁</a></li>
+          <li><a href="{{ url('/quest') }}">任務大廳</a></li>
+          <li class="active">工讀任務</li>
+          </ol>
+        </div>
+        <div class="col-sm-2">
+          <a class="btn btn-success btn-block" href="{{url('/work/search')}}" role="button">搜尋任務</a>
+        </div>
       </div>
-      <div class="col-sm-2">
-        <a class="btn btn-success btn-block" href="{{url('/work/search')}}" role="button">搜尋任務</a>
-      </div>
-    </div>
     
     {{ $quests->links() }}
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th>任務標題</th>
-						<th>發布單位</th>
-						<th>報名開始時間</th>
-						<th>報名結束時間</th>
-						<th>獎勵冒險點數</th>
-						<th>薪資</th>
-						<th>需要人數</th>
+						<th class="text-center">任務名稱</th>
+						<th class="text-center">申請截止時間</th>
+            <th class="text-center">開始時間 ~ 結束時間</th>
+            <th class="text-center">任務地點</th>
+						<th class="text-center">獎勵冒險點數</th>
+						<th class="text-center">薪資</th>
+						<th class="text-center">人數需要</th>
 					</tr>
 				</thead>
 				<tbody>
   				@for($i=0; $i < count($quests); $i++)
   					<tr data-toggle="modal" data-target="#quest{{$i}}">
   						<td>{{ $quests[$i]->name }}</td>
-  						<td>{{ $quests[$i]->creator }}</td>
-  						<td>{{ $quests[$i]->start_at }}</td>
-  						<td>{{ $quests[$i]->end_at }}</td>
-  						<td>{{ $quests[$i]->point }}</td>
-  						<td>{{ $quests[$i]->salary }}</td>
-  						<td>{{ $quests[$i]->workforce }}</td>
+  						<td class="text-center">{{ $quests[$i]->apply_end_at }}</td>
+              <td class="text-center">{{ $quests[$i]->execute_start_at}} ~ {{ $quests[$i]->execute_end_at}}</td>
+              <td class="text-center">{{ $quests[$i]->place}}</td>
+  						<td class="text-center">{{ $quests[$i]->point }}</td>
+              @if($quests[$i]->salary_type === 0) 
+                <td class="text-center">{{ $quests[$i]->salary }} 元/小時</td>
+              @elseif($quests[$i]->salary_type === 1)
+                <td class="text-center">{{ $quests[$i]->salary }} 元/日</td>
+              @elseif($quests[$i]->salary_type === 2)
+                <td class="text-center">{{ $quests[$i]->salary }} 元/次</td>
+              @endif
+  						<td class="text-center">{{ $quests[$i]->people_require }}</td>
   					</tr>
 				@endfor
 				</tbody>

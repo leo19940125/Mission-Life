@@ -72,19 +72,22 @@ Route::patch('/account/change_pwd/{id}','UserController@update_pwd');
 Route::get('/quest','QuestController@showQuestlobby');
 
 // 「工讀」介面
-Route::get('/work',['as'=>'work','uses'=>'QuestController@showWork']);  // 顯示
+Route::get('/work',['as'=>'work','uses'=>'QuestController@showWork_2']);  // 顯示
+//這空格意味著datebase的不同
 Route::get('/work/get/{id}','UmController@getwork');  // 接取
 Route::get('/work/cancel/{id}','UmController@cancelwork');  // 取消
 Route::get('/work/search','QuestController@showSearchWork');//顯示搜索頁面
 Route::get('/work/search/result','QuestController@SearchWorkResult');//顯示搜索結果
 
 // 「活動」介面
-Route::get('/activity','QuestController@showActivity');
+Route::get('/activity',['as' => 'activity', 'uses' =>'QuestController@showActivity_2']);
+//這空格意味著datebase的不同
 Route::get('/activity/get/{id}','UmController@getactivity');
 Route::get('/activity/cancel/{id}','UmController@cancelactivity');
 
 // 「講座」介面
-Route::get('/conf','QuestController@showConf');
+Route::get('/conf',['as' => 'conf', 'uses' => 'QuestController@showConf_2']);
+//這空格意味著datebase的不同
 Route::get('/conf/get/{id}','UmController@getconf');
 Route::get('/conf/cancel/{id}','UmController@cancelconf');
 Route::get('/confQRcode/{id}','QuestController@confQRcode_generate');
