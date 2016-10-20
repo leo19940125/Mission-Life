@@ -79,6 +79,9 @@ Route::patch('/account/change_pwd/{id}','UserController@update_pwd');
 // 任務大廳
 Route::get('/quest','QuestController@showQuestlobby');
 
+// 商店
+Route::get('/item','itemController@showItem');
+
 // 「工讀」介面
 Route::get('/work',['as'=>'work','uses'=>'QuestController@showWork_2']);  // 顯示
 //這空格意味著datebase的不同
