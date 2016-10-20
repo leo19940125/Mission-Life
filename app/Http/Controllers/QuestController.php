@@ -208,7 +208,8 @@ class QuestController extends Controller
         // if ($request->page === '3') {
         //     return $request->all();
         // }
-        $quests = DB::table('quests')->paginate(10);
+        $now = Carbon::now();
+        $quests = DB::table('quests')->where('apply_start_at','<=',$now)->where('apply_end_at','>=',$now)->paginate(10);
         // if (isset($quests)) {
         //     return $quests->currentPage();
         // }
@@ -230,7 +231,8 @@ class QuestController extends Controller
     }
     public function showActivity_2()
     {
-        $quests = DB::table('activities')->paginate(10);
+        $now = Carbon::now();
+        $quests = DB::table('activities')->where('apply_start_at','<=',$now)->where('apply_end_at','>=',$now)->paginate(10);
         $ums = DB::table('um')->where('user_id',Auth::user()->id)->get();
         return view('activity',['quests' => $quests, 'ums' => $ums]);
     }
@@ -242,7 +244,8 @@ class QuestController extends Controller
     }
     public function showConf_2()
     {
-        $quests = DB::table('lectures')->paginate(10);
+        $now = Carbon::now();
+        $quests = DB::table('lectures')->where('apply_start_at','<=',$now)->where('apply_end_at','>=',$now)->paginate(10);
         $ums = DB::table('um')->where('user_id',Auth::user()->id)->get();
         return view('conf',['quests' => $quests, 'ums' => $ums]);
     }

@@ -60,10 +60,6 @@
       							<td>獎勵點數</td>
       							<td>{{ $quests[$i]->point }}點</td>
       						</tr>
-      						<tr>
-      							<td>人數上限</td>
-      							<td>{{ $quests[$i]->max_people }}人</td>
-      						</tr>
       					</table>
       				</div>
       				<div class="modal-footer">
@@ -101,7 +97,6 @@
 						<th class="text-center">開始時間 ~ 結束時間</th>
             <th class="text-center">任務地點</th>
 						<th class="text-center">獎勵冒險點數</th>
-						<th class="text-center">人數上限</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -112,7 +107,6 @@
   						<td class="text-center">{{ $quests[$i]->execute_start_at }} ~ {{ $quests[$i]->execute_end_at }}</td>
               <td class="text-center">{{ $quests[$i]->place}}</td>
   						<td class="text-center">{{ $quests[$i]->point }}</td>
-  						<td class="text-center">{{ $quests[$i]->max_people }}</td>
   					</tr>
 				@endfor
 				</tbody>

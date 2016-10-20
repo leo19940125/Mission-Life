@@ -126,6 +126,10 @@
       							<td>人數需求</td>
       							<td>{{ $quests[$i]->people_require }}人</td>
       						</tr>
+                  <tr>
+                    <td>已申請人數</td>
+                    <td>{{ $quests[$i]->now_apply_people}}</td>
+                  </tr>   
       					</table>
       				</div>
       				<div class="modal-footer">
