@@ -49,7 +49,7 @@
     <div style="position:absolute;display:none;z-index:1" id="fail" class="col-md-3">
     <!-- 加了搜索任務按鈕後發現通知訊息會被breadcrumb連結蓋掉 因此加了z-index移到上層-->
       <div class="alert alert-danger">
-        <i class="icon-frown icon-large"></i> 任務接取失敗！
+        <i class="icon-frown icon-large"></i> 任務放棄成功！
       </div>
     </div>
 

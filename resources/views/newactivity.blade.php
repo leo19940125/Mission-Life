@@ -149,18 +149,6 @@
                                     <label for="point" class="col-md-1 control-label">點</label>
                               </div>
                           
-            	            <div class="form-group">
-             	               	<label for="max_people" class="col-md-2 col-md-offset-2 control-label">活動人數上限</label>
-             	               	<div class="col-md-3">
-             	               		<input id="max_people" type="number" class="form-control" name="max_people" value="{{old('max_people')}}">
-                                          @if ($errors->has('max_people'))
-                                          <span class="help-block">
-                                          <strong>{{ $errors->first('max_people') }}</strong>
-                                          </span>
-                                          @endif
-             	           		</div>
-             	           		<label for="max_people" class="col-md-1 control-label">人</label>
-             	          	</div>
                           <div class="form-group">
                             <label for="other_description" class="col-md-2 col-md-offset-2 control-label">其它說明</label>
                             <div class="col-md-6">

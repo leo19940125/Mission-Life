@@ -42,7 +42,6 @@ class ActivityController extends Controller
             'admission_fee'=>'required',
             'participate_award'=>'required',
             'point'=>'required|integer|min:1',
-            'max_people'=>'required|integer|min:1',
             ],$messages);
         
         $activity = new Activity;
@@ -57,7 +56,7 @@ class ActivityController extends Controller
         $activity->admission_fee = $request->admission_fee;
         $activity->participate_award = $request->participate_award;
         $activity->point = $request->point;
-        $activity->max_people = $request->max_people;
+        $activity->max_people = 0;
         $activity->now_apply_people = 0;
         $activity->actual_completed_people = 0;
         $activity->other_description = $request->other_description;
